@@ -110,6 +110,8 @@ def work(timeout, ports, is_https):
                 if resp_http and (not is_https or resp_https is None):
                     print_line(resp_http, ip)
 
+        except requests.exceptions.ReadTimeout:
+            pass
         except Exception as e:
             raise e
             pass
@@ -117,13 +119,6 @@ def work(timeout, ports, is_https):
 
 
 def main():
-    print(white,'''
-               /    _/_ /       
-   _   __  __ /___  /  /_  o _  
-  /_)_/ (_(_)/_)</_<__/ /_<_/_)_
- /              ''',end,'''@github/shobhit99''',white,'''
-'              
-    ''',end, file=sys.stderr)
     usage = '''
     Example:
 
