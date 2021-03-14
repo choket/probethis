@@ -55,7 +55,7 @@ def print_line(r, ip_addr):
               flush=True
          )
     except Exception as e:
-        print(str(e))
+        print(str(e), file=sys.stderr)
         pass
 
 def extract_domain(url):
@@ -113,7 +113,7 @@ def work(timeout, ports, is_https):
         except requests.exceptions.ReadTimeout:
             pass
         except Exception as e:
-            raise e
+            print(str(e), file=sys.stderr)
             pass
 
 
